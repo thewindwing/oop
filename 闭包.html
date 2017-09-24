@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    	function fn(){
+    		var foo='bar';
+    		var getFoo=function(){
+    			return foo;
+    		};
+    		var setFoo=function(val){
+    			foo=val;
+    		}
+    		return {
+    			getFoo:getFoo,
+    			setFoo:setFoo
+    		}
+    	}
+    	var obj=fn();
+    	console.log(obj.getFoo());
+    	obj.setFoo(20);
+    	console.log(obj.getFoo());
+    </script>
+    </body>
+</html>

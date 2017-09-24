@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery库结构</title>
+</head>
+
+<body>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <script src="vendor/jquery.js"></script>
+  <script>
+    // jQuery 的 each 方法里面的 this 是遍历项 DOM 元素
+    // $('p').each(function (index, item) {
+    //   console.log(this)
+    // })
+
+    $.fn.myEach = function (fn) {
+      for (var i = 0; i < this.length; i++) {
+        // fn(i, this[i])
+
+        // 这里调用 fn ，fn 内部的 this 被指定为 this[i] DOM 对象
+        fn.call(this[i], i, this[i])
+      }
+    }
+
+    $('p').myEach(function (index, item) {
+      console.log(this)
+      console.log(index, item)
+      // var $this = $(this) // $ 函数把 this DOM 对象包装为一个 jQuery 实例对象了
+    })
+
+    var num = 2
+    fn(1, +num + 1);
+    function fn(a, b) {
+      console.log(a, b)
+    }
+
+
+
+
+  </script>
+  <script>
+    // function fn() {w.alert('hello')window.alert('hello')window.alert('hello')window.alert('hello')window.alert('hello')window.alert('hello')window.alert('hello')}
+
+    // fn()
+
+    // (function (window) {
+    //   window.alert('hello')
+    //   window.alert('hello')
+    //   window.alert('hello')
+    //   window.alert('hello')
+    //   window.alert('hello')
+    //   window.alert('hello')
+    // })(window)
+
+    // (function(window){window.alert("hello");window.alert("hello");window.alert("hello");window.alert("hello");window.alert("hello");window.alert("hello")})(window);
+
+    // (function(a){a.alert("hello");a.alert("hello");a.alert("hello");a.alert("hello");a.alert("hello");a.alert("hello")})(window);
+
+    // 连续赋值语句，从右往左
+    // var a = b = c = d = e = 123
+    // console.log(a)
+  </script>
+</body>
+
+</html>

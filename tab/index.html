@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .active {
+      background-color: yellow;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tab">
+    <div class="title">
+      <button class="active">音乐</button>
+      <button>我的</button>
+      <button>朋友圈</button>
+    </div>
+    <div class="body">
+      <div>音乐面板内容</div>
+      <div class="hide">我的面板内容</div>
+      <div class="hide">朋友圈面板内容</div>
+    </div>
+  </div>
+
+  <div class="tab1">
+    <div class="title">
+      <button class="active">音乐</button>
+      <button>我的</button>
+      <button>朋友圈</button>
+    </div>
+    <div class="body">
+      <div>音乐面板内容</div>
+      <div class="hide">我的面板内容</div>
+      <div class="hide">朋友圈面板内容</div>
+    </div>
+  </div>
+
+  <div class="tab2">
+    <div class="title">
+      <button class="active">音乐</button>
+      <button>我的</button>
+      <button>朋友圈</button>
+    </div>
+    <div class="body">
+      <div>音乐面板内容</div>
+      <div class="hide">我的面板内容</div>
+      <div class="hide">朋友圈面板内容</div>
+    </div>
+  </div>
+  <script src="tab.js"></script>
+  <script>
+    new Tab('.tab', {
+      autoPlay: true,
+      interval: 500
+    })
+
+    new Tab('.tab1')
+    new Tab('.tab2')
+  </script>
+</body>
+
+</html>

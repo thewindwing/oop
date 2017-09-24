@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    132
+    <div>
+      456
+      <p>123</p>
+      <p>123</p>
+      <p>123</p>
+      <span>dsadsa</span>
+    </div>
+    <div>
+      <div>
+        <div>
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+          <p>4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 把当前网页中所有的 DOM 节点元素获取到放到一个数组中
+    // 1. 先获取根节点
+    // 2. 然后拿到根节点的子节点
+    var rootNode = document.getElementsByTagName('html')[0]
+    
+    var domTree = []
+
+    function getDomTree(children) {
+      for (var i = 0; i < children.length; i++) {
+        var element = children[i]
+        domTree.push(element)
+        if (element.children) {
+          getDomTree(element.children)
+        }
+        // 如果 element 还有 children 则继续遍历 element.children
+      }
+    }
+
+    getDomTree(rootNode.children)
+
+    console.log(domTree)
+  </script>
+</body>
+
+</html>

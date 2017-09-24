@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+  /*  	this.x = 9; 
+    	var module = {
+    	  x: 81,
+    	  getX: function() { return this.x; }
+    	};
+
+    	console.log(module.getX()); 
+
+    	var retrieveX = module.getX;
+    	console.log(retrieveX()); 
+    	var boundGetX = retrieveX.bind(module);
+    	console.log(boundGetX());*/
+
+    	/*function LateBloomer() {
+    	  this.petalCount = Math.ceil(Math.random() * 12) + 1;
+    	}
+
+    	// Declare bloom after a delay of 1 second
+    	LateBloomer.prototype.bloom = function() {
+    	  window.setTimeout(this.declare.bind(this), 1000);
+    	};
+
+    	LateBloomer.prototype.declare = function() {
+    	  console.log('I am a beautiful flower with ' +
+    	    this.petalCount + ' petals!');
+    	};
+
+    	var flower = new LateBloomer();
+    	flower.bloom();*/  // 一秒钟后, 调用'declare'方法
+
+
+    </script>
+    <button id="btn">点我</button>
+    <script>
+    var obj = {
+      name: 'haha'
+    }
+    	var user = {
+    	  name: '张三',
+    	  init: function () {
+    	    // this
+    	    document.getElementById('btn').onclick = (function () {
+    	      window.alert(this.name);
+    	      console.log(this);//user
+    	  }.bind(this));
+    	},
+    	sayName: function () {
+    	/*setTimeout(function () {//内容this指向window
+          console.log(this.name) //'张三'
+        }.bind(this), 1000)	*/
+        var handle = function () {
+          console.log(this)
+        };
+         // JavaScript 是求值之后才传递参数
+        var newHandle = handle.bind(obj);
+        setTimeout(newHandle, 1000);//'haha'
+    	
+    	
+    }
+    }
+    user.init();
+    user.sayName();
+    var arr = [1,2,3];
+    	arr.forEach(function(){
+    		console.log(this);//内容this指向window
+    	}.bind(arr));//bind改变this指向arr
+    </script>
+    </body>
+</html>

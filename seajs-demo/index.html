@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script src="js/sea.js"></script>
+  <!-- 
+    0. 下载 seajs
+    1. 在页面中加载
+    2. 然后通过 seajs.use() 方法启动你的模块系统
+   -->
+   <script>
+    // 该方法会加载 main.js 并执行其中的代码
+    // main 是模块入口
+    // 目的就是加载执行就可以了
+     seajs.use('./js/main.js')
+
+     // a 一般就是要吗执行里面的代码
+     // 要吗拿到里面的某个成员
+     // seajs.use('./js/a.js')
+   </script>
+</body>
+</html>

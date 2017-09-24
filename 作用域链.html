@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    //函数的作用域链以定义时所处的作用域为准，而不是调用时
+    	var f = function () {
+    	  var foo = 'baz'
+    	  function fn() {
+    	    console.log(foo)
+    	  }
+    	  return fn
+    	}
+    	function fn() {
+    	  var foo = 'bar'
+    	  // fn1()
+    	  f()()//baz
+    	}
+    	fn();    	
+    </script>
+    </body>
+</html>

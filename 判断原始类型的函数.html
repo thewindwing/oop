@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    	//判断元素的原始类型
+    function generateCheckTypeFn(type){
+    	var checkType=function(obj){
+    		return Object.prototype.toString.call(obj)===type;
+    	}
+    	return checkType;
+    }
+    var isArray=generateCheckTypeFn('[object Array]');
+    var isObject=generateCheckTypeFn('[object Object]');
+    var isString=generateCheckTypeFn('[object String]');
+    var isNumber=generateCheckTypeFn('[object Number]');
+    console.log(isArray([]));
+    console.log(isString('52'));
+    console.log(isObject({}));
+    console.log(isNumber(0));
+    </script>
+    </body>
+</html>

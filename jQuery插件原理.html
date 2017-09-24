@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery插件扩展原理</title>
+</head>
+<body>
+  <div id="app"></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <p>123</p>
+  <p>456</p>
+  <p>789</p>
+  <p>101112</p>
+  <!-- <script src="../node_modules/jquery/dist/jquery.js"></script> -->
+  <script>
+    // console.log($('div'))
+    // $.fn.foo = 'bar'
+    // $.fn.f = function () {
+    //   console.log('fff')
+    // }
+    // console.log($('#app').foo)
+    // $('#app').f()
+
+    // $.fn.extend({
+    //   foo: 'bar',
+    //   f: function () {
+    //     console.log('fff')
+    //   }
+    // })
+
+    // console.log($('#app').foo)
+    // $('#app').f()
+
+    
+
+    // $('#app')
+
+    ;(function (window) {
+      function $(selector) {
+        // 调用 $() 不需要手动 new
+        // 因为在 $ 函数内部帮你直接 new 了
+        return new init(selector)
+      }
+
+      $.each = function (arr, fn) {
+        for(var i = 0; i < arr.length; i++) {
+          fn(arr[i], i)
+        }
+      }
+
+      $.fn = init.prototype
+
+      function init(selector) {
+        // 如果 selector 是字符串，则我去查找
+        // 如果 selector 是 DOM 元素，则直接 this[0] = dom
+        var elements = document.getElementsByTagName(selector)
+        this.length = elements.length
+        for(var i = 0; i < elements.length; i++) {
+          this[i] = elements[i]
+        }
+      }
+
+      init.prototype.css = function (attr, val) {
+        for(var i = 0; i < this.length; i++) {
+          this[i].style[attr] = val
+        }
+        return this
+      }
+
+      init.prototype.extend = function (obj) {
+        for(var key in obj) {
+          this[key] = obj[key]
+        }
+      }
+
+      init.prototype.each = function (fn) {
+        for(var i = 0; i < this.length; i++) {
+          fn(i, this[i])
+        }
+      }
+      window.$ = $
+    })(window)
+
+    // jQuery 选择器选择得到是一个伪数组对象
+
+    $('div').css('width', '200px')
+      .css('height', '200px')
+      .css('backgroundColor', 'red')
+
+    $.fn.attr = function function_name(attr, val) {
+      for(var i = 0; i < this.length; i++) {
+        this[i].setAttribute(attr, val)
+      }
+      return this
+    }
+
+    $.fn.extend({
+      foo: 'bar',
+      f: function () {
+        console.log(123)
+      }
+    })
+
+    $('p').attr('foo', 'bar')
+      .attr('title', '哈哈')
+      .css('color', 'green')
+      .f()
+
+    // $('p').each(function (i, element) {
+    //   console.log($(element))
+    // })
+
+    $.each([10, 20, 30], function (item, i) {
+      console.log(item, i)
+    })
+
+  </script>
+</body>
+</html>

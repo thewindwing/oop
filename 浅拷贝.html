@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //让obj1得到obj的所有数据，两者互不影响
+    var obj={
+        a:1,
+        b:'li',
+        c:{1:2,d:[8,9]},
+        e:[5,0]
+    };
+    obj1=obj;
+    obj1.a=2222;
+//    console.log(obj1,obj.a);
+    var obj1={};//指向另一个对象
+    for(var  key in obj){
+        obj1[key]=obj[key];
+    }
+    console.log(obj1===obj);
+</script>
+
+</body>
+</html>

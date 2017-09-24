@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">    
+</head>
+<body>
+    <ul id="tree_container"></ul>
+    <script src='tree.js'></script>
+    <script>
+    	var data=[
+    	{name:'hello',
+    	children:[{name:'哈哈',children:[{name:'呵呵',children:[{name:'嘿嘿'}]}]}]
+    },
+    {name:'wait'},
+    {name:'child floder',
+    children:[{name:'child floder',children:[{name:'hello'},{name:'wait'}]},{name:'world'},{name:'wait'},{name:'child folder',children:[{name:'hello'},{name:'wait'}]}]
+}
+];
+new Tree('tree_container',data);
+</script>
+</body>
+</html>

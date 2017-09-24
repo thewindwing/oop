@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    Array.prototype.mySlice=function(){
+      // 参数个数为 0 则从 0 截到最后
+      // 参数个数为 1 则从 第一个参数开始的索引 截到最后
+      // 参数个数为 2 则从 第一个参数开始的索引 截到第二个参数截止的索引
+    	var start=0;
+    	var end=this.length;
+    	arguments.length===1&&(start=arguments[0]);
+    	arguments.length===2&&(start=arguments[0],end=arguments[1]);
+    	var temp=[];
+    	for(var i=start;i<end;i++){//不包括最后一个位置
+    		temp.push(this[i]);
+    	}
+    	return temp;
+    }
+
+    	function fn(){
+    		//借用数组的slice方法得到一个数组
+    		var args= [].mySlice.call(arguments,1);
+    		console.log(args);
+    		args.forEach(function(item,index){
+    			console.log(item,index);
+    		})
+    	}
+    	fn(5,6);
+    </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>apply - 数组借用 Math 的 max 和 min 方法</title>
+</head>
+
+<body>
+  <script>
+    var myMath = {
+      max: function () {
+        var max = arguments[0]
+        for (var i = 0; i < arguments.length; i++) {
+          if (arguments[i] > max) {
+            max = arguments[i]
+          }
+        }
+        return max
+      }
+    }
+
+    var arr = [32, 1, 32, 13, 2, 4321, 13, 21, 3]
+
+    // 第一个参数用来指定内部 this 的指向
+    // apply 会把数组给展开，也就是把里面的元素一个一个的拿出来传递给方法
+    // apply 要求传递一个数组或者伪数组，apply 会帮你把数组展开再一个一个的传递到方法内部
+    // 这里 apply 的第一个参数传什么都无所谓，因为 max 方法内部没有使用 this
+    // 所以这里的第一个参数随便传，但是建议传递一个 null 表示不指定内部 this 指向
+    var max = myMath.max.apply(null, arr)
+    console.log(max)
+  </script>
+</body>
+
+</html>

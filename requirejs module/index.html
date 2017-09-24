@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- <script data-main='main.js' src="require.js"></script> -->
+  <script src="require.js"></script>
+  <script type="text/javascript">
+    // 动态创建script标签，通过该标签的src属性发出去的请求都是异步的（不阻塞的）
+
+    require.config({
+      baseUrl : './js', // 设置查找模块的参考路径
+      paths : { // 给模块起一个别名，方便依赖模块时使用
+        m1 : '../module1',
+        m2 : '../module2',
+        m3 : '../module3',
+        m4 : '../module4',
+        m5 : '../module5',
+        t : '../test',
+        jquery : '../jquery'
+      },
+      shim : { // 垫片 pollyfill 腻子脚本 作用：把非标准模块，变成标准模块
+        t : {
+          exports : 'foo'
+        }
+      }
+    });
+
+    require(['../main'],function(m){
+      // console.log(typeof m);
+      // m();
+      // console.log(m);
+      m.fn();
+      m.foo();
+    });
+
+     console.log(456);
+  </script>
+</head>
+<body>
+  <div id="test">Require.js</div>
+</body>
+</html>
